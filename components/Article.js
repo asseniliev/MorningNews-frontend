@@ -21,7 +21,7 @@ function Article(props) {
       return;
     }
 
-    fetch(`${backendUrl}/${user.token}`)
+    fetch(`${backendUrl}/users/canBookmark/${user.token}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.result && data.canBookmark) {
