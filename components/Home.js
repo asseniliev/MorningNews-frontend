@@ -4,6 +4,8 @@ import Head from "next/head";
 import Article from "./Article";
 import TopArticle from "./TopArticle";
 import styles from "../styles/Home.module.css";
+import backendUrl from '../modules/backendUrl';
+
 
 import { clearListOfHiddenArticles } from "../reducers/hiddenArticles";
 
@@ -15,7 +17,7 @@ function Home() {
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:3000/articles")
+    fetch(`${backendUrl}/articles`)
       .then((response) => response.json())
       .then((data) => {
         setTopArticle(data.articles[0]);

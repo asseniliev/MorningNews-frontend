@@ -10,6 +10,7 @@ import Moment from "react-moment";
 import { Modal } from "antd";
 import Link from "next/link";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import backendUrl from '../modules/backendUrl';
 
 function Header() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function Header() {
   }, []);
 
   const handleRegister = () => {
-    fetch("http://localhost:3000/users/signup", {
+    fetch(`${backendUrl}/users/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -47,7 +48,7 @@ function Header() {
   };
 
   const handleConnection = () => {
-    fetch("http://localhost:3000/users/signin", {
+    fetch(`${backendUrl}/users/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -187,7 +188,7 @@ function Header() {
           <Modal
             getContainer="#react-modals"
             className={styles.modal}
-            visible={isModalVisible}
+            open={isModalVisible}
             closable={false}
             footer={null}
           >
